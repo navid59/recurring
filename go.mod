@@ -1,3 +1,3 @@
-module https://github.com/navid59/subscription
+module github.com/navid59/recurring
 
-go 1.14
+go 1.17

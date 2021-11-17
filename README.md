@@ -1,1 +1,1 @@
-# Recurring payments
+# RECURRING API
