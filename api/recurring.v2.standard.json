@@ -1,0 +1,1919 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "subscription",
+    "version": "2.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:8080/api/v1/"
+    }
+  ],
+  "paths": {
+    "/subscription": {
+      "post": {
+        "summary": "",
+        "operationId": "post-subscribe",
+        "responses": {
+          "200": {
+            "description": "Subscription created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "details": {
+                      "type": "object",
+                      "properties": {
+                        "planName": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "planAmount": {
+                          "type": "number"
+                        },
+                        "planCurrency": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "email": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "startDate": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "planName",
+                        "planAmount",
+                        "planCurrency",
+                        "name",
+                        "email",
+                        "startDate"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "details"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "string",
+                      "message": "string",
+                      "details": {
+                        "planName": "string",
+                        "planAmount": 0,
+                        "planCurrency": "string",
+                        "name": "string",
+                        "email": "string",
+                        "startDate": "string"
+                      }
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "code": 200,
+                      "message": "Subscription created successfully.",
+                      "details": {
+                        "planName": "Magazine Auto - monthly",
+                        "planAmount": 19.5,
+                        "planCurrency": "RON",
+                        "name": "Navid",
+                        "email": "navid@netopia-system.com",
+                        "startDate": "2019-09-06 15:00:00"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "details": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "code",
+                          "message",
+                          "field"
+                        ],
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "message": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "additionalProp1": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp2": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp3": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "additionalProp1",
+                              "additionalProp2",
+                              "additionalProp3"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "details"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "string",
+                      "message": "string",
+                      "details": [
+                        {
+                          "code": "string",
+                          "message": "string",
+                          "field": "string",
+                          "attributes": {
+                            "additionalProp1": "string",
+                            "additionalProp2": "string",
+                            "additionalProp3": "string"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "string",
+                      "message": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Add new subscriber",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "mrchanUserID": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "adress": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "Tel": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "endDate": {},
+                  "createdAt": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "flags": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "PaymentConfig": {
+                    "type": "object",
+                    "properties": {
+                      "InstantPayment": {
+                        "type": "string"
+                      },
+                      "Instrument": {
+                        "type": "object",
+                        "properties": {
+                          "Type": {
+                            "type": "string"
+                          },
+                          "Account": {
+                            "type": "string"
+                          },
+                          "ExpMonth": {
+                            "type": "integer"
+                          },
+                          "ExpYear": {
+                            "type": "integer"
+                          },
+                          "SecretCode": {
+                            "type": "string"
+                          },
+                          "Token": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "ThreeDS2": {
+                        "type": [
+                          "string",
+                          "object"
+                        ],
+                        "properties": {
+                          "BROWSER_USER_AGENT": {
+                            "type": "string"
+                          },
+                          "OS": {
+                            "type": "string"
+                          },
+                          "OS_VERSION": {
+                            "type": "string"
+                          },
+                          "MOBILE": {
+                            "type": "string"
+                          },
+                          "SCREEN_POINT": {
+                            "type": "string"
+                          },
+                          "SCREEN_PRINT": {
+                            "type": "string"
+                          },
+                          "BROWSER_COLOR_DEPTH": {
+                            "type": "string"
+                          },
+                          "BROWSER_SCREEN_HEIGHT": {
+                            "type": "string"
+                          },
+                          "BROWSER_SCREEN_WIDTH": {
+                            "type": "string"
+                          },
+                          "BROWSER_PLUGINS": {
+                            "type": "string"
+                          },
+                          "BROWSER_JAVA_ENABLED": {
+                            "type": "string"
+                          },
+                          "BROWSER_LANGUAGE": {
+                            "type": "string"
+                          },
+                          "BROWSER_TZ": {
+                            "type": "string"
+                          },
+                          "BROWSER_TZ_OFFSET": {
+                            "type": "string"
+                          },
+                          "IP_ADDRESS": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "plan": {
+                    "type": "string"
+                  },
+                  "PlanDetails": {
+                    "type": "object",
+                    "properties": {
+                      "RecurrenceType": {
+                        "type": "string"
+                      },
+                      "RecurrenceDay": {
+                        "type": "integer"
+                      },
+                      "PosID": {
+                        "type": "string"
+                      },
+                      "Description": {
+                        "type": "string"
+                      },
+                      "GracePeriod": {
+                        "type": "integer"
+                      },
+                      "Amount": {
+                        "type": "number"
+                      },
+                      "Currency": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "mrchanUserID",
+                  "name",
+                  "lastName",
+                  "email",
+                  "adress",
+                  "Tel",
+                  "startDate",
+                  "createdAt",
+                  "status",
+                  "flags"
+                ]
+              },
+              "examples": {
+                "example-With-Card": {
+                  "value": {
+                    "Name": "randomFirstName",
+                    "LastName": "randomFullName",
+                    "Email": "randomEmail",
+                    "Adress": "randomStreetAddress",
+                    "Tel": "randomPhoneNumber",
+                    "MerchantSignature": "AAAA-AAAA-AAAA-AAAA-AAAA",
+                    "Plan": "Ninja Go",
+                    "PlanDetails": {
+                      "RecurrenceType": "Fix",
+                      "RecurrenceDay": 10,
+                      "PosID": "",
+                      "Description": "The Plan Description - From Cloud RUN",
+                      "GracePeriod": 0,
+                      "Amount": 20.15,
+                      "Currency": "RON"
+                    },
+                    "StartDate": "2020-10-28T00:00:00-00:00",
+                    "EndDate": "2025-03-27T00:00:00-00:00",
+                    "PaymentConfig": {
+                      "InstantPayment": "Yes",
+                      "Instrument": {
+                        "Type": "card",
+                        "Account": "9900009184214768",
+                        "ExpMonth": 12,
+                        "ExpYear": 2021,
+                        "SecretCode": "111",
+                        "Token": null
+                      },
+                      "ThreeDS2": {
+                        "BROWSER_USER_AGENT": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36",
+                        "OS": "Linux",
+                        "OS_VERSION": "x86_64",
+                        "MOBILE": "false",
+                        "SCREEN_POINT": "false",
+                        "SCREEN_PRINT": "Current Resolution: 1920x1080, Available Resolution: 1853x1053, Color Depth: 24, Device XDPI: undefined, Device YDPI: undefined",
+                        "BROWSER_COLOR_DEPTH": "24",
+                        "BROWSER_SCREEN_HEIGHT": "1080",
+                        "BROWSER_SCREEN_WIDTH": "1920",
+                        "BROWSER_PLUGINS": "PDF Viewer, Chrome PDF Viewer, Chromium PDF Viewer, Microsoft Edge PDF Viewer, WebKit built-in PDF",
+                        "BROWSER_JAVA_ENABLED": "false",
+                        "BROWSER_LANGUAGE": "en-US",
+                        "BROWSER_TZ": "Europe/Bucharest",
+                        "BROWSER_TZ_OFFSET": "-120",
+                        "IP_ADDRESS": "37.221.166.134"
+                      }
+                    }
+                  }
+                },
+                "example-with-token": {
+                  "value": {
+                    "Name": "randomFirstName",
+                    "LastName": "randomFullName",
+                    "Email": "randomEmail",
+                    "Adress": "randomStreetAddress",
+                    "Tel": "randomPhoneNumber",
+                    "MerchantSignature": "AAAA-AAAA-AAAA-AAAA-AAAA",
+                    "Plan": "Ninja Go",
+                    "PlanDetails": {
+                      "RecurrenceType": "Fix",
+                      "RecurrenceDay": 10,
+                      "PosID": "",
+                      "Description": "The Plan Description - From Cloud RUN",
+                      "GracePeriod": 0,
+                      "Amount": 20.15,
+                      "Currency": "RON"
+                    },
+                    "StartDate": "2020-10-28T00:00:00-00:00",
+                    "EndDate": "2025-03-27T00:00:00-00:00",
+                    "PaymentConfig": {
+                      "InstantPayment": "Yes",
+                      "Instrument": {
+                        "Type": "Token",
+                        "Account": null,
+                        "ExpMonth": null,
+                        "ExpYear": null,
+                        "SecretCode": null,
+                        "Token": "MyActuallValidToken"
+                      },
+                      "ThreeDS2": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/subscription/cancel": {
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-subscription-cancel",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 200,
+                      "message": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "details": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "code",
+                          "message",
+                          "field"
+                        ],
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "message": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "additionalProp1": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp2": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp3": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "additionalProp1",
+                              "additionalProp2",
+                              "additionalProp3"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "details"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "string",
+                      "message": "string",
+                      "details": [
+                        {
+                          "code": "string",
+                          "message": "string",
+                          "field": "string",
+                          "attributes": {
+                            "additionalProp1": "string",
+                            "additionalProp2": "string",
+                            "additionalProp3": "string"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 401,
+                      "message": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 404,
+                      "message": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 500,
+                      "message": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Unsubscribe from specific plan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "MerchantSignature": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "userId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "MerchantSignature",
+                  "userId"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "MerchantSignature": "AAAA-AAAA-AAAA-AAAA-AAAA",
+                    "userId": "5706948380983296"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscription/list": {
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-subscription-planId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "members": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mrchanUserId": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "lastName": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "status": {
+                            "type": "boolean"
+                          },
+                          "flags": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "Id": {
+                            "type": "string"
+                          },
+                          "Plan": {
+                            "type": "string"
+                          },
+                          "PlanDetails": {
+                            "type": [
+                              "string",
+                              "object"
+                            ],
+                            "properties": {
+                              "RecurrenceType": {
+                                "type": "string"
+                              },
+                              "RecurrenceDay": {
+                                "type": "string"
+                              },
+                              "PosID": {
+                                "type": "string"
+                              },
+                              "Description": {
+                                "type": "string"
+                              },
+                              "GracePeriod": {
+                                "type": "string"
+                              },
+                              "Amount": {
+                                "type": "number"
+                              },
+                              "Currency": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "StartDate": {
+                            "type": "string"
+                          },
+                          "EndDate": {
+                            "type": "string"
+                          },
+                          "Status": {
+                            "type": "string"
+                          },
+                          "Flags": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "mrchanUserId",
+                          "name",
+                          "lastName",
+                          "createdAt",
+                          "status",
+                          "flags"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "members"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "members": [
+                        {
+                          "mrchanUserId": "string",
+                          "name": "string",
+                          "lastName": "string",
+                          "createdAt": "string",
+                          "status": true,
+                          "flags": "string"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "details": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "code",
+                          "message",
+                          "field"
+                        ],
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "message": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "additionalProp1": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp2": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp3": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "additionalProp1",
+                              "additionalProp2",
+                              "additionalProp3"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "details"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "string",
+                      "message": "string",
+                      "details": [
+                        {
+                          "code": "string",
+                          "message": "string",
+                          "field": "string",
+                          "attributes": {
+                            "additionalProp1": "string",
+                            "additionalProp2": "string",
+                            "additionalProp3": "string"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "string",
+                      "message": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get list of members for specific plan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "MerchantSignature": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "MerchantSignature"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "MerchantSignature": "AAAA-AAAA-AAAA-AAAA-AAAA"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscription/status": {
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-subscription-status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "email": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "adress": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "Tel": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "lastTransactionAt": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "lastTransactionStatus": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "updatedAt": {},
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "flags": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "lastName",
+                    "email",
+                    "adress",
+                    "Tel",
+                    "startDate",
+                    "endDate",
+                    "lastTransactionAt",
+                    "lastTransactionStatus",
+                    "createdAt",
+                    "status",
+                    "flags"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "name": "string",
+                      "lastName": "string",
+                      "email": "string",
+                      "adress": "string",
+                      "Tel": "string",
+                      "startDate": "string",
+                      "endDate": "string",
+                      "lastTransactionAt": "string",
+                      "lastTransactionStatus": "string",
+                      "createdAt": "string",
+                      "updatedAt": null,
+                      "status": true,
+                      "flags": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "details": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "code",
+                          "message",
+                          "field"
+                        ],
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "message": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "additionalProp1": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp2": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "additionalProp3": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "additionalProp1",
+                              "additionalProp2",
+                              "additionalProp3"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "details"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "planId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "userId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "planId",
+                  "userId"
+                ]
+              }
+            }
+          }
+        },
+        "description": "Retrieve the subscriber information, who matching 'User ID' & 'Merchant User ID'"
+      }
+    },
+    "/subscription/search": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-subscription-search"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-subscription-search",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "members": {
+                      "type": [
+                        "string",
+                        "object"
+                      ],
+                      "properties": {
+                        "Id": {
+                          "type": "string"
+                        },
+                        "Name": {
+                          "type": "string"
+                        },
+                        "LastName": {
+                          "type": "string"
+                        },
+                        "Email": {
+                          "type": "string"
+                        },
+                        "Adress": {
+                          "type": "string"
+                        },
+                        "Tel": {
+                          "type": "string"
+                        },
+                        "MerchantSignature": {
+                          "type": "string"
+                        },
+                        "Plan": {
+                          "type": "string"
+                        },
+                        "PlanDetails": {
+                          "type": "object",
+                          "properties": {
+                            "recurrenceType": {
+                              "type": "string"
+                            },
+                            "recurrenceDay": {
+                              "type": "string"
+                            },
+                            "posID": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "gracePeriod": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "string"
+                            },
+                            "currency": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "StartDate": {
+                          "type": "string"
+                        },
+                        "EndDate": {
+                          "type": "string"
+                        },
+                        "PaymentConfig": {
+                          "type": [
+                            "string",
+                            "object"
+                          ],
+                          "properties": {
+                            "InstantPayment": {
+                              "type": "string"
+                            },
+                            "Instrument": {
+                              "type": "object",
+                              "properties": {
+                                "Type": {
+                                  "type": "string"
+                                },
+                                "Account": {
+                                  "type": "string"
+                                },
+                                "ExpMonth": {
+                                  "type": "integer"
+                                },
+                                "ExpYear": {
+                                  "type": "integer"
+                                },
+                                "SecretCode": {
+                                  "type": "string"
+                                },
+                                "Token": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "ThreeDS2": {
+                              "type": [
+                                "string",
+                                "object"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "members": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "Search subscription",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Plan": {
+                    "type": "string"
+                  },
+                  "UserEmail": {
+                    "type": "string"
+                  },
+                  "MerchantSignature": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "Plan": "string",
+                    "UserEmail": "string",
+                    "MerchantSignature": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Plan": {
+        "title": "Plan",
+        "type": "object",
+        "x-examples": {
+          "Magazine Auto": {
+            "id": "string",
+            "recurrenceType": "string",
+            "recurrenceDay": 15,
+            "posID": "XXXX-XXXX-XXXX-XXXX-XXXX",
+            "name": "Magazine Auto - monthly",
+            "description": "Top magazine of Auto",
+            "gracePeriod": 0,
+            "amount": 19.5,
+            "currency": "RON",
+            "createdAt": "2021-09-06 13:00:00",
+            "updatedAt": "2021-09-06 13:05:40",
+            "status": true,
+            "flags": "valid"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "recurrenceType": {
+            "type": "string",
+            "description": "Type of subscription (Fix / Dynamic)",
+            "maxLength": 3
+          },
+          "recurrenceDay": {
+            "type": "integer",
+            "description": "if type is fix ,the value will be Day of Month & if type is Dynamic the value will be X day's after last Payment",
+            "minimum": 1,
+            "maximum": 27
+          },
+          "posID": {
+            "type": "string",
+            "description": "Is posId of Commerciant (Temporary Signature ID)",
+            "pattern": "^[A-Z-]"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of recurring plan"
+          },
+          "description": {
+            "type": "string",
+            "description": "A short description for recurring plan"
+          },
+          "gracePeriod": {
+            "type": "integer",
+            "default": 0,
+            "minimum": 0,
+            "description": "number of days for use free (test period) (default is ZERO)"
+          },
+          "amount": {
+            "type": "number",
+            "format": "float"
+          },
+          "currency": {
+            "type": "string",
+            "maxLength": 3,
+            "pattern": "[A-Za-z]",
+            "minLength": 3
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "boolean",
+            "description": "True for ACTIVE & False for INACTIVE"
+          },
+          "flags": {
+            "type": "string",
+            "description": "To set different flag like: Deleted / Blocked / valid / expired ...."
+          }
+        },
+        "required": [
+          "id",
+          "recurrenceType",
+          "recurrenceDay",
+          "posID",
+          "name",
+          "amount",
+          "currency"
+        ]
+      },
+      "Subscription": {
+        "description": "",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "id": "string",
+            "planID": "string",
+            "exceptionPlanID": "string",
+            "mrchanUserID": 0,
+            "name": "string",
+            "lastName": "string",
+            "email": "string",
+            "adress": "string",
+            "Tel": "string",
+            "paymentToken": "string",
+            "paymentTokenBackup": "string",
+            "startDate": "string",
+            "endDate": "string",
+            "lastTransactionID": "string",
+            "lastTransactionAt": "string",
+            "lastTransactionStatus": "string",
+            "createdAt": "string",
+            "updatedAt": null,
+            "status": true,
+            "flags": "string"
+          },
+          "Navid Subscription": {
+            "id": "string",
+            "planID": "string",
+            "exceptionPlanID": "string",
+            "mrchanUserID": 10,
+            "name": "Navid",
+            "lastName": "Torabazari",
+            "email": "navid@netopia-system.com",
+            "adress": "Bucuresti, Sos Pantelimon, nr 12, ap 30 ",
+            "Tel": "0732933900",
+            "paymentToken": "xnxnxnxnxnxn",
+            "paymentTokenBackup": null,
+            "startDate": "2020-09-09",
+            "endDate": "2021-09-08",
+            "lastTransactionID": "78985",
+            "lastTransactionAt": "2021-08-06",
+            "lastTransactionStatus": "paid",
+            "createdAt": "2020-09-09",
+            "updatedAt": null,
+            "status": true,
+            "flags": "active"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "planID": {
+            "type": "integer"
+          },
+          "exceptionPlanID": {
+            "type": "integer"
+          },
+          "mrchanUserID": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adress": {
+            "type": "string",
+            "minLength": 1
+          },
+          "Tel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "paymentToken": {
+            "type": "string",
+            "minLength": 1
+          },
+          "paymentTokenBackup": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "endDate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastTransactionID": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastTransactionAt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastTransactionStatus": {
+            "type": "string",
+            "minLength": 1
+          },
+          "createdAt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "flags": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "planID",
+          "exceptionPlanID",
+          "mrchanUserID",
+          "name",
+          "lastName",
+          "email",
+          "adress",
+          "Tel",
+          "paymentToken",
+          "startDate",
+          "endDate",
+          "lastTransactionID",
+          "lastTransactionAt",
+          "lastTransactionStatus",
+          "createdAt",
+          "status",
+          "flags"
+        ]
+      },
+      "Payment": {
+        "title": "Payment",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "id": "string"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "ntpID": {
+            "type": "string"
+          },
+          "subscriptionID": {
+            "type": "integer"
+          },
+          "paymentResponse": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          },
+          "flags": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "ntpID",
+          "subscriptionID"
+        ]
+      },
+      "executionPlanner": {
+        "title": "executionPlanner",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscriptionID": {
+            "type": "integer"
+          },
+          "paymentID": {
+            "type": "integer"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "executeAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          },
+          "flags": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "subscriptionID",
+          "paymentID",
+          "createdAt",
+          "executeAt",
+          "status"
+        ],
+        "x-examples": {
+          "example-1": {
+            "id": "string",
+            "subscriptionID": 0,
+            "paymentID": 0,
+            "createdAt": "2019-08-24T14:15:22Z",
+            "updatedAt": "string",
+            "executeAt": "2019-08-24T14:15:22Z",
+            "status": "string",
+            "flags": "string"
+          }
+        }
+      }
+    }
+  }
+}
